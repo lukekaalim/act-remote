@@ -1,0 +1,9 @@
+{
+  "workspaces": [
+    "remote",
+    "web"
+  ],
+  "scripts": {
+    "demo:web": "npm run demo -w web"
+  }
+}
