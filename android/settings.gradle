@@ -1,0 +1,27 @@
+// For quickjs
+repositories {
+  mavenCentral()
+}
+dependencies {
+  // For Android
+  implementation 'wang.harlon.quickjs:wrapper-android:latest.version'
+  // For JVM
+  implementation 'wang.harlon.quickjs:wrapper-java:latest.version'
+}
+
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+rootProject.name = "Act-Native-Demo"
+include ':app'
