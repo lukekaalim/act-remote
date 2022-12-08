@@ -68,10 +68,19 @@ class MainActivity : FragmentActivity() {
                 if (view is ViewGroup) {
                     attachChildren(view, children.map { it.node });
                 }
+                if (view is LinearLayout) {
+                    var orientation = diff.next.element.props["orientation"];
+                    if (orientation is JSONProp)
+                        view.orientation = if
+                                ((orientation.value as String).lowercase() == "horizontal")
+                                    LinearLayout.HORIZONTAL
+                                else
+                                    LinearLayout.VERTICAL
+                }
                 if (view is TextView) {
-                    var prop = diff.next.element.props["content"];
-                    if (prop != null && prop is JSONProp)
-                        view.text = prop.value as? String ?: "";
+                    var content = diff.next.element.props["content"];
+                    if (content is JSONProp)
+                        view.text = content.value as? String ?: "";
                 }
                 if (view is Button) {
                     var onClick = diff.next.element.props["onClick"];

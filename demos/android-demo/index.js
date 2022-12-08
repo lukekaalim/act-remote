@@ -22,8 +22,10 @@ export type Platform = {
 const App = () => {
   const [count, setCount] = useState/*:: <number>*/(0);
   return [
-    'Hello World!',
-    `You've clicked me ${count} times`,
+    h('android:linear_layout', { orientation: 'vertical' }, [
+      'Hello World!',
+      `You've clicked me ${count} times`,
+    ]),
     h('android:button', { onClick: () => setCount(c => c + 1), content: "Button" })
   ];
 }
@@ -33,7 +35,7 @@ export const main = (platform/*: Platform*/) => {
   platform.log("I'm calling from Javascript into Android!")
 
   const host = createRemoteRendererHost(
-    c => platform.setTimeout(c, 10),
+    c => platform.setTimeout(c, 0),
     id => platform.cancelTimeout(id)
   )
   host.subscribe(platform.onDiff);
