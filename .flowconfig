@@ -1,5 +1,7 @@
 [ignore]
 <PROJECT_ROOT>/node_modules/resolve/.*
+
+.*/dist/bundle.js
 [include]
 
 [libs]

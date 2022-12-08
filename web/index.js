@@ -99,10 +99,10 @@ export const createRemoteWebClient = (
   }
   
   const createNode = (element/*: JSONElement*/, namespace/*: string*/)/*: null | Node*/ => {
-    if (element.type.type === 'component')
+    if (element.component.type === 'function')
       return null;
     
-    const { name } = element.type;
+    const { name } = element.component;
     if (name === 'act:null')
       return null;
     if (name === 'act:string')

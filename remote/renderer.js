@@ -29,13 +29,13 @@ export const createManagedJSONRenderer = /*:: <TNode>*/(
   const nodesByCommitID/*: Map<CommitID, TNode>*/ = new Map();
 
   const createNode = (diff) => {
-    const { type } = diff.next.element;
-    switch (type.type) {
+    const { component } = diff.next.element;
+    switch (component.type) {
       default:
-      case 'component':
+      case 'function':
         return null;
       case 'element':
-        switch (type.name) {
+        switch (component.name) {
           case 'act:null':
             return null;
           default:

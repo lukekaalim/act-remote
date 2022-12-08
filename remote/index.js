@@ -24,8 +24,8 @@ export type JSONProp =
   | { type: 'function' }
 
 export type JSONElement = {
-  type:
-    | { type: 'component' }
+  component:
+    | { type: 'function' }
     | { type: 'element', name: string },
   props: [string, JSONProp][],
 };
@@ -84,9 +84,9 @@ const createJSONProp = (prop/*: mixed*/)/*: JSONProp*/ => {
 }
 const createJSONElement = (element/*: Element*/)/*: JSONElement*/ => {
   return {
-    type: typeof element.type === 'string'
+    component: typeof element.type === 'string'
       ? { type: 'element', name: element.type }
-      : { type: 'component' },
+      : { type: 'function' },
     props: Object.keys(element.props).map(p => [p, createJSONProp(element.props[p])]),
   }
 }
@@ -109,7 +109,10 @@ const createJSONDiff = (commitDiff/*: CommitDiff*/)/*: JSONDiff*/ => {
   };
 }
 
-export const createRemoteRendererHost = ()/*: RemoteRenderHost*/ => {
+export const createRemoteRendererHost = (
+  scheduleWork/*: (c: () => mixed) => number*/,
+  cancelWork/*: (number) => void*/,
+)/*: RemoteRenderHost*/ => {
   const listeners = new Set();
   const nodes = new Map();
 
@@ -129,8 +132,8 @@ export const createRemoteRendererHost = ()/*: RemoteRenderHost*/ => {
 
   const options = {
     onDiff,
-    scheduleWork: (c) => requestAnimationFrame(() => void c()),
-    cancelWork: (t) => cancelAnimationFrame(t),
+    scheduleWork,
+    cancelWork,
   };
 
   const mount = (element) => {
