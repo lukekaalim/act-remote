@@ -13,12 +13,15 @@ const App/*: Component<>*/ = () => {
     'Hello world!',
     h('button', {
       onclick: (e) => (console.log(e), setCount(c => c + 1))
-    }, `Clicked ${count} times!`)
+    }, `Clicked ${count} times!`),
   ])
 }
 
 const main = () => {
-  const host = createRemoteRendererHost();
+  const host = createRemoteRendererHost(
+    c => (setInterval(c, 0)/*: any*/),
+    n => clearInterval((n/*: any*/))
+  );
 
   self.addEventListener('message', message => {
     const data = (message.data/*: any*/);

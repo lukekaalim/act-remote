@@ -21,12 +21,17 @@ export type Platform = {
 
 const App = () => {
   const [count, setCount] = useState/*:: <number>*/(0);
+  const [showPlayer, setShowPlayer] = useState/*:: <boolean>*/ (true);
   return [
     h('android:linear_layout', { orientation: 'vertical' }, [
       'Hello World!',
       `You've clicked me ${count} times`,
+      h('android:linear_layout', { orientation: 'horizontal' }, [
+        h('android:button', { onClick: () => setCount(c => c + 1), content: "Button" }),
+        h('android:button', { onClick: () => setShowPlayer(p => !p), content: "Toggle Player" }),
+      ]),
+      showPlayer && h('android:exoplayer', { videoUri: 'https://storage.googleapis.com/wvmedia/clear/hevc/tears/tears.mpd' }),
     ]),
-    h('android:button', { onClick: () => setCount(c => c + 1), content: "Button" })
   ];
 }
 

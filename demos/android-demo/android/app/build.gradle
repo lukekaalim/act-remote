@@ -5,15 +5,25 @@ plugins {
 
 android {
     namespace 'com.example.androidapp'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.example.androidapp"
-        minSdk 21
-        targetSdk 32
+        minSdk 19
+        targetSdk 33
         versionCode 1
         versionName "1.0"
+        // Adding brightcove adds so much complexity that
+        // we now require a multi-dex setup
+        multiDexEnabled true
+    }
+    kotlinOptions {
+        jvmTarget = "11"
+    }
 
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility JavaVersion.VERSION_11
     }
 
     buildTypes {
@@ -32,4 +42,11 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'com.github.bumptech.glide:glide:4.11.0'
+
+    implementation 'com.android.support:multidex:2.0.1'
+    implementation "com.brightcove.player:android-sdk:7.1.4"
+    implementation "com.brightcove.player:exoplayer2:7.1.4"
+    implementation "com.brightcove.player:android-appcompat-plugin:7.1.4"
+
+    implementation 'com.google.android.exoplayer:exoplayer:2.18.2'
 }

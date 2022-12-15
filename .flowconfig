@@ -2,6 +2,7 @@
 <PROJECT_ROOT>/node_modules/resolve/.*
 
 .*/dist/bundle.js
+.*/dist.dataset/bundle.js
 [include]
 
 [libs]

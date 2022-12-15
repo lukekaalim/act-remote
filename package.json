@@ -2,7 +2,8 @@
   "workspaces": [
     "remote",
     "web",
-    "demos/android-demo"
+    "demos/android-demo",
+    "demos/ios"
   ],
   "scripts": {
     "demo:web": "npm run demo -w web"

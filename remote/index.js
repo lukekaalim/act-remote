@@ -38,6 +38,7 @@ export type JSONCommit = {
   ...CommitRef,
   element: JSONElement,
   suspension: null | JSONSuspension,
+  version: string,
   pruned: boolean,
   children: JSONCommit[],
 }
