@@ -1,0 +1,29 @@
+{
+  "name": "ios-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lukekaalim/act-remote.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lukekaalim/act-remote/issues"
+  },
+  "homepage": "https://github.com/lukekaalim/act-remote#readme",
+  "dependencies": {
+    "@lukekaalim/act": "^2.4.1",
+    "@lukekaalim/act-remote-renderer": "*"
+  },
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "rollup": "^3.6.0"
+  }
+}
