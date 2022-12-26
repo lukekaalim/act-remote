@@ -18,9 +18,8 @@ let bridge = SwiftBridge(bundlePath: "dist");
 struct iosApp: App {
     var body: some Scene {
         WindowGroup {
-            VStack {
-                ActRendererComponent(host: platform.render);
-            }.onAppear {
+            ActRendererComponent(host: platform.render)
+            .onAppear {
                 bridge.run(platform);
             }
         }
