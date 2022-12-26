@@ -34,7 +34,12 @@ public class UIActRendererController: UIViewController {
         if let stack = view as? UIStackView {
             for index in 0..<results.count {
                 let result = results[index];
-                stack.insertArrangedSubview(result.node, at: index);
+                if (stack.arrangedSubviews.count <= index) {
+                    stack.insertArrangedSubview(result.node, at: index);
+                }
+                if (stack.arrangedSubviews[index] != result.node) {
+                    stack.insertArrangedSubview(result.node, at: index);
+                }
             }
         }
     }

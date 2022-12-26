@@ -36,12 +36,12 @@ class ManagedRenderer<T>: Renderer {
         self.impl = impl;
     }
     
-    var nodes: Dictionary<String, T> = Dictionary();
+    var nodes: Dictionary<String, T?> = Dictionary();
     
     public func getNodes(_ commit: Commit) -> [RenderResult<T>] {
         let node = nodes[commit.id]
-        if (node != nil) {
-            return [RenderResult(commit: commit, node: node!)];
+        if (node != nil && node! != nil) {
+            return [RenderResult(commit: commit, node: node!!)];
         }
         
         return commit.children.flatMap { commit in
@@ -49,8 +49,19 @@ class ManagedRenderer<T>: Renderer {
         }
     }
     
+    func createNode(_ diff: Diff) -> T? {
+        let node = impl.createNode(diff);
+        nodes[diff.next.id] = node;
+        return node;
+    }
+    func removeNode(_ diff: Diff, _ node: T, _ children: [RenderResult<T>]) -> () {
+        nodes.removeValue(forKey: diff.next.id);
+        impl.removeNode(diff, node, children);
+    }
+    
     public func render(_ diff: Diff) -> [RenderResult<T>] {
-        let node: T? = nodes[diff.next.id] ?? impl.createNode(diff);
+        let previousNode = nodes[diff.next.id];
+        let node: T? = previousNode ?? createNode(diff);
         let children = diff.diffs.flatMap { diff in render(diff) }
 
         let hasDiff = diff.next.version != diff.prev.version;
@@ -70,7 +81,7 @@ class ManagedRenderer<T>: Renderer {
             return [RenderResult(commit: diff.next, node: node!)];
         }
         
-        impl.removeNode(diff, node!, children);
+        removeNode(diff, node!, children);
         return [];
     }
 }

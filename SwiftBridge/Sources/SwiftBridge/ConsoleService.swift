@@ -15,10 +15,7 @@ public struct ConsoleService {
         object.dup();
         
         let log = context.createFunction(name: "log", argumentCount: 1) { this, arguments in
-            if #available(tvOS 14, *) {
-                Logger().info("\(arguments[0].string!)")
-            }
-            
+            print("\(arguments[0].string!)");
             return nil;
         }
         

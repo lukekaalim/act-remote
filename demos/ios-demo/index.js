@@ -23,7 +23,6 @@ const App = ({ platform }) => {
         h('ios:label', { text: 'Much!' }),
         h('ios:button', { text: 'Much!', onPress: () => {
           setCount(count + 1);
-          console.log('SETTING COUNT')
         } }),
       ]),
       h('ios:label', { text: 'Space!' }),
@@ -43,7 +42,6 @@ const App = ({ platform }) => {
 export const main = (platform/*: Platform*/) => {
   const { console, timeout, render } = platform;
   global.console = console;
-  console.log("Hello!")
   
   const host = createRemoteRendererHost(
     c => { timeout.setTimeout(function myFunc() {
@@ -51,12 +49,9 @@ export const main = (platform/*: Platform*/) => {
     }, 0); return 1; },
     id => {}
   )
-  console.log('Setup Remote Host')
   host.subscribe(render.submitDiff);
 
-  console.log('Subscribed Invoke callback')
   render.subscribeCallback((commit, prop, value) => {
-    console.log(`COMMIT ${commit}, prop: ${prop}, value: ${JSON.stringify(value)}`)
     host.invoke(commit, prop, value)
   })
 

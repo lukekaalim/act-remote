@@ -886,7 +886,6 @@ const createRemoteRendererHost = (
   };
 
   const onDiff = (commitDiff) => {
-    console.log(JSON.stringify(commitDiff, null, 2));
     traverseDiff(commitDiff);
 
     for (const { handler } of listeners)
@@ -954,7 +953,6 @@ const App = ({ platform }) => {
         createElement('ios:label', { text: 'Much!' }),
         createElement('ios:button', { text: 'Much!', onPress: () => {
           setCount(count + 1);
-          console.log('SETTING COUNT');
         } }),
       ]),
       createElement('ios:label', { text: 'Space!' }),
@@ -974,7 +972,6 @@ const App = ({ platform }) => {
 const main = (platform/*: Platform*/) => {
   const { console, timeout, render } = platform;
   global.console = console;
-  console.log("Hello!");
   
   const host = createRemoteRendererHost(
     c => { timeout.setTimeout(function myFunc() {
@@ -982,12 +979,9 @@ const main = (platform/*: Platform*/) => {
     }, 0); return 1; },
     id => {}
   );
-  console.log('Setup Remote Host');
   host.subscribe(render.submitDiff);
 
-  console.log('Subscribed Invoke callback');
   render.subscribeCallback((commit, prop, value) => {
-    console.log(`COMMIT ${commit}, prop: ${prop}, value: ${JSON.stringify(value)}`);
     host.invoke(commit, prop, value);
   });
 

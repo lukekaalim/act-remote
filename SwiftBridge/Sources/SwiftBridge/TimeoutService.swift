@@ -18,20 +18,14 @@ public struct TimeoutService {
             let timeout = arguments[1].double!;
             arguments[0].dup();
             let callbackFunction = arguments[0];
-            print(Thread.current)
             
-            do {
-                print(Thread.current)
-                print("Running timeout function")
-                print("Called setTimeout")
-                print("Is function \(callbackFunction.isFunction)")
-                
-                try context.callFunction(function: callbackFunction, arguments: []);
-            } catch {
-                print("Timout error: \(error)")
+            DispatchQueue.main.asyncAfter(deadline: .now() + (timeout / 1000)) {
+                do {
+                    try context.callFunction(function: callbackFunction, arguments: []);
+                } catch {
+                    print("Timout error: \(error)")
+                }
             }
-            
-            print("After Timeout");
             return nil;
         }
         

@@ -128,7 +128,6 @@ export const createRemoteRendererHost = (
   }
 
   const onDiff = (commitDiff) => {
-    console.log(JSON.stringify(commitDiff, null, 2));
     traverseDiff(commitDiff);
 
     for (const { handler } of listeners)

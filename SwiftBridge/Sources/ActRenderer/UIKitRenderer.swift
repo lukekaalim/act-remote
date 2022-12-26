@@ -30,6 +30,7 @@ class UIKitRenderer: Renderer {
         case .function:
             return nil;
         case .element(let element):
+            print("CREATING NODE \(element.name)");
             switch (element.name) {
             case "ios:label":
                 return UILabel();
@@ -54,17 +55,12 @@ class UIKitRenderer: Renderer {
             let onPressProp = diff.next.element.props["onPress"];
             if case .function = onPressProp! {
                 if #available(tvOS 14.0, *) {
-                    
-                    print(Thread.current)
                     button.addAction(UIAction(title: "Button Title", handler: { _ in
-                        print("Start Invoke")
-                        print(Thread.current)
                         self.invoke(FunctionPropInvoke(
                             commit: diff.next.id,
                             prop: "onPress",
                             value: []
                         ));
-                        print("FINISHED ONPRESS HANDLER")
                     }), for: .primaryActionTriggered)
                 } else {
                     // Fallback on earlier versions
@@ -79,7 +75,12 @@ class UIKitRenderer: Renderer {
             
             for index in 0..<children.count {
                 let child = children[index];
-                stack.insertArrangedSubview(child.node, at: index);
+                if (stack.arrangedSubviews.count <= index) {
+                    stack.insertArrangedSubview(child.node, at: index);
+                }
+                if (stack.arrangedSubviews[index] != child.node) {
+                    stack.insertArrangedSubview(child.node, at: index);
+                }
             }
         default:
             return;
