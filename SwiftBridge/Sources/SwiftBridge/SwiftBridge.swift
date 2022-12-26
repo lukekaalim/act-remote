@@ -30,7 +30,7 @@ public class SwiftBridge {
         }
     }
     
-    public func run(platformObject: JSValue) {
-        self.main!(platformObject)
+    public func run(_ platform: Platform) {
+        self.main!(platform.CreatePlatformObject(context: context))
     }
 }

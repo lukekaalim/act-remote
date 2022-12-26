@@ -8,7 +8,7 @@
 import Foundation
 import QuickJS
 
-public struct BasicPlatform {
+public struct BasicPlatform: Platform {
     public let console = ConsoleService();
     public let render = RenderService();
     public let timeout = TimeoutService();

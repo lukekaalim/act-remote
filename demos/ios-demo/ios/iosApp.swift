@@ -21,7 +21,7 @@ struct iosApp: App {
             VStack {
                 ActRendererComponent(host: platform.render);
             }.onAppear {
-                bridge.run(platformObject: platform.CreatePlatformObject(context: bridge.context));
+                bridge.run(platform);
             }
         }
     }
