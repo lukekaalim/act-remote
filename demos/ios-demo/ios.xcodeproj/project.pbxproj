@@ -16,9 +16,12 @@
 		E9C3E01D294625F1008DB347 /* ActTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C3E01C294625F1008DB347 /* ActTypes.swift */; };
 		E9C3E01F29462988008DB347 /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C3E01E29462988008DB347 /* Platform.swift */; };
 		E9C3E02129471171008DB347 /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9C3E02029471171008DB347 /* View.xib */; };
+		E9E27E9329597CD8005A18A9 /* ActRenderer in Frameworks */ = {isa = PBXBuildFile; productRef = E9E27E9229597CD8005A18A9 /* ActRenderer */; };
+		E9E27E9529597CD8005A18A9 /* SwiftBridge in Frameworks */ = {isa = PBXBuildFile; productRef = E9E27E9429597CD8005A18A9 /* SwiftBridge */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E9174A0729597168007C001E /* SwiftBridge */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SwiftBridge; path = ../../SwiftBridge; sourceTree = "<group>"; };
 		E9AFF4412943941200DDAEC2 /* ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9AFF4442943941200DDAEC2 /* iosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iosApp.swift; sourceTree = "<group>"; };
 		E9AFF4462943941200DDAEC2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -35,6 +38,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9E27E9329597CD8005A18A9 /* ActRenderer in Frameworks */,
+				E9E27E9529597CD8005A18A9 /* SwiftBridge in Frameworks */,
 				E9C3E0192944E2D5008DB347 /* QuickJS in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -48,6 +53,7 @@
 				E9AFF45A2944E09400DDAEC2 /* Packages */,
 				E9AFF4432943941200DDAEC2 /* ios */,
 				E9AFF4422943941200DDAEC2 /* Products */,
+				E9E27E9129597CD8005A18A9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -85,9 +91,17 @@
 		E9AFF45A2944E09400DDAEC2 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
+				E9174A0729597168007C001E /* SwiftBridge */,
 			);
 			name = Packages;
 			sourceTree = SOURCE_ROOT;
+		};
+		E9E27E9129597CD8005A18A9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -107,6 +121,8 @@
 			name = ios;
 			packageProductDependencies = (
 				E9C3E0182944E2D5008DB347 /* QuickJS */,
+				E9E27E9229597CD8005A18A9 /* ActRenderer */,
+				E9E27E9429597CD8005A18A9 /* SwiftBridge */,
 			);
 			productName = ios;
 			productReference = E9AFF4412943941200DDAEC2 /* ios.app */;
@@ -382,6 +398,14 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E9C3E0172944E2D5008DB347 /* XCRemoteSwiftPackageReference "QuickJS-Swift-tvOS" */;
 			productName = QuickJS;
+		};
+		E9E27E9229597CD8005A18A9 /* ActRenderer */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ActRenderer;
+		};
+		E9E27E9429597CD8005A18A9 /* SwiftBridge */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SwiftBridge;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

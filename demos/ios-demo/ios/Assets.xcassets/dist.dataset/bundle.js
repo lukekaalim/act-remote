@@ -879,10 +879,14 @@ const createRemoteRendererHost = (
     for (const childDiff of diff.diffs)
       traverseDiff(childDiff);
 
-    nodes.set(diff.next.id, diff.next);
+    if (diff.next.pruned)
+      nodes.delete(diff.next.id);
+    else
+      nodes.set(diff.next.id, diff.next);
   };
 
   const onDiff = (commitDiff) => {
+    console.log(JSON.stringify(commitDiff, null, 2));
     traverseDiff(commitDiff);
 
     for (const { handler } of listeners)
@@ -932,31 +936,28 @@ const createRemoteRendererHost = (
 /*::
 import type { JSONDiff, JSONValue } from "@lukekaalim/act-remote-renderer";
 import type { CommitID } from "@lukekaalim/act-reconciler";
+import type { BasicBridge } from "@lukekaalim/platform-bridge";
 
 export type Platform = {
-  log: (value: string) => void,
-
-  onDiff: (diff: JSONDiff) => void,
-  subscribeInvoke: (
-    listener: (commit: CommitID, prop: string, value: JSONValue[]) => mixed
-  ) => void,
-
-  setTimeout: (onTimeout: () => mixed, duration: number) => number,
-  cancelTimeout: (timeoutId: number) => void,
+  ...BasicBridge
 };
 */
 
-const App = () => {
+const App = ({ platform }) => {
   const [count, setCount] = useState/*:: <number>*/(0);
   const [showPlayer, setShowPlayer] = useState/*:: <boolean>*/ (true);
   return [
     createElement('ios:stack_view', { orientation: 'vertical' }, [
 
       createElement('ios:stack_view', { orientation: 'horizontal' }, [
-        createElement('ios:text', { content: 'Wow!' }),
-        createElement('ios:text', { content: 'Much!' }),
+        createElement('ios:label', { text: `${count} Count` }),
+        createElement('ios:label', { text: 'Much!' }),
+        createElement('ios:button', { text: 'Much!', onPress: () => {
+          setCount(count + 1);
+          console.log('SETTING COUNT');
+        } }),
       ]),
-      createElement('ios:text', { content: 'Space!' }),
+      createElement('ios:label', { text: 'Space!' }),
     ]),
     createElement('android:linear_layout', { orientation: 'vertical' }, [
       'Hello World!',
@@ -971,16 +972,27 @@ const App = () => {
 };
 
 const main = (platform/*: Platform*/) => {
-  platform.log("Hello world!");
-  platform.log("I'm calling from Javascript into Android!");
+  const { console, timeout, render } = platform;
+  global.console = console;
+  console.log("Hello!");
+  
   const host = createRemoteRendererHost(
-    c => platform.setTimeout(c, 0),
-    id => platform.cancelTimeout(id)
+    c => { timeout.setTimeout(function myFunc() {
+      c();
+    }, 0); return 1; },
+    id => {}
   );
-  host.subscribe(platform.onDiff);
-  host.mount(createElement(App));
+  console.log('Setup Remote Host');
+  host.subscribe(render.submitDiff);
 
-  platform.subscribeInvoke((commit, prop, value) => host.invoke(commit, prop, value));
+  console.log('Subscribed Invoke callback');
+  render.subscribeCallback((commit, prop, value) => {
+    console.log(`COMMIT ${commit}, prop: ${prop}, value: ${JSON.stringify(value)}`);
+    host.invoke(commit, prop, value);
+  });
+
+  console.log('Mounted App');
+  host.mount(createElement(App, { platform }));
 };
 
 global.main = main;

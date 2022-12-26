@@ -20,7 +20,8 @@
   "homepage": "https://github.com/lukekaalim/act-remote#readme",
   "dependencies": {
     "@lukekaalim/act": "^2.4.1",
-    "@lukekaalim/act-remote-renderer": "*"
+    "@lukekaalim/act-remote-renderer": "*",
+    "@lukekaalim/platform-bridge": "*"
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^15.0.1",

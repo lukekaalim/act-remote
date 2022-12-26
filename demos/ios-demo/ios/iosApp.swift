@@ -8,65 +8,22 @@
 import SwiftUI
 import QuickJS
 import OSLog
+import SwiftBridge;
+import ActRenderer;
 
-let runtime = JSRuntime()!
-let context = runtime.createContext()!
-
-class ActController: UIViewController {
-    let renderer = ManagedRenderer();
-    
-    func onDiff(diff: Diff) {
-        let results = self.renderer.render(diff)
-        
-        if let stack = view as? UIStackView {
-            for index in 0..<results.count {
-                let result = results[index];
-                stack.insertArrangedSubview(result.node, at: index);
-            }
-        }
-    }
-    
-    func loadBundle() {
-        let dist = NSDataAsset(name: "dist")!
-        let bundle = String(decoding: dist.data, as: UTF8.self);
-        let global = context.getGlobalObject();
-        global.setProperty("global", global);
-        
-        context.evalModule(bundle, moduleName: "main");
-        let main = context.getGlobalObject().getProperty("main");
-        let platform = Platform(onDiff: self.onDiff);
-        
-        let platformObject = platform.createJSObject(context: context);
-        
-        let mainOutput = context.callFunction(function: main, arguments: [platformObject])
-        if (mainOutput.isException) {
-            Logger().error("\(context.getException()!)")
-        }
-    }
-    
-    override func loadView() {
-        view = UIStackView();
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad();
-        loadBundle();
-    }
-}
-
-struct ActUIViewControllerRepresentable: UIViewControllerRepresentable {
-    func makeUIViewController(context: Context) -> ActController {
-        return ActController();
-    }
-    
-    func updateUIViewController(_ uiView: ActController, context: Context) {}
-}
+let platform = BasicPlatform();
+let bridge = SwiftBridge(bundlePath: "dist");
 
 @main
 struct iosApp: App {
     var body: some Scene {
         WindowGroup {
-            ActUIViewControllerRepresentable()
+            VStack {
+                ActRendererComponent(host: platform.render);
+            }.onAppear {
+                print(Thread.current)
+                bridge.run(platformObject: platform.CreatePlatformObject(context: bridge.context));
+            }
         }
     }
 }

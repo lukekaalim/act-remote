@@ -1,8 +1,9 @@
 {
-  "name": "@lukekaalim/act-remote",
+  "name": "@lukekaalim/platform-bridge",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,10 +16,5 @@
   "bugs": {
     "url": "https://github.com/lukekaalim/act-remote/issues"
   },
-  "homepage": "https://github.com/lukekaalim/act-remote#readme",
-  "dependencies": {
-    "@lukekaalim/act": "^2.4.1",
-    "@lukekaalim/act-reconciler": "^3.0.1",
-    "@lukekaalim/act-renderer-core": "^3.2.2"
-  }
+  "homepage": "https://github.com/lukekaalim/act-remote#readme"
 }

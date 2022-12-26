@@ -121,10 +121,14 @@ export const createRemoteRendererHost = (
     for (const childDiff of diff.diffs)
       traverseDiff(childDiff)
 
-    nodes.set(diff.next.id, diff.next);
+    if (diff.next.pruned)
+      nodes.delete(diff.next.id);
+    else
+      nodes.set(diff.next.id, diff.next);
   }
 
   const onDiff = (commitDiff) => {
+    console.log(JSON.stringify(commitDiff, null, 2));
     traverseDiff(commitDiff);
 
     for (const { handler } of listeners)

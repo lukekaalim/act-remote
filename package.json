@@ -3,7 +3,8 @@
     "remote",
     "web",
     "demos/android-demo",
-    "demos/ios"
+    "demos/ios-demo",
+    "bridge"
   ],
   "scripts": {
     "demo:web": "npm run demo -w web"
