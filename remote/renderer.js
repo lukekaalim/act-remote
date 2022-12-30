@@ -9,7 +9,7 @@ export type RenderResult<TNode> = {
   node: TNode,
 };
 export type Renderer<TNode> = {
-  render: (diff: JSONDiff) => RenderResult<TNode>[],
+  render: (diff: JSONDiff, parent?: ?TNode) => RenderResult<TNode>[],
   getNodes: (commit: JSONCommit) => RenderResult<TNode>[],
 }
 export type RendererOptions<TNode> = {

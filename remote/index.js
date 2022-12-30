@@ -1,6 +1,6 @@
 // @flow strict
 /*::
-import type { Element } from '@lukekaalim/act';
+import type { Element, ElementID } from '@lukekaalim/act';
 import type { CommitDiff, CommitID, Commit, CommitRef } from "@lukekaalim/act-reconciler";
 import type { Suspension } from "@lukekaalim/act-reconciler";
 */
@@ -24,6 +24,7 @@ export type JSONProp =
   | { type: 'function' }
 
 export type JSONElement = {
+  id: ElementID,
   component:
     | { type: 'function' }
     | { type: 'element', name: string },
@@ -85,6 +86,7 @@ const createJSONProp = (prop/*: mixed*/)/*: JSONProp*/ => {
 }
 const createJSONElement = (element/*: Element*/)/*: JSONElement*/ => {
   return {
+    id: element.id,
     component: typeof element.type === 'string'
       ? { type: 'element', name: element.type }
       : { type: 'function' },
