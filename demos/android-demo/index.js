@@ -5,17 +5,10 @@ import { createRemoteRendererHost } from "@lukekaalim/act-remote-renderer";
 /*::
 import type { JSONDiff, JSONValue } from "@lukekaalim/act-remote-renderer";
 import type { CommitID } from "@lukekaalim/act-reconciler";
+import type { BasicBridge } from "../../bridge";
 
 export type Platform = {
-  log: (value: string) => void,
-
-  onDiff: (diff: JSONDiff) => void,
-  subscribeInvoke: (
-    listener: (commit: CommitID, prop: string, value: JSONValue[]) => mixed
-  ) => void,
-
-  setTimeout: (onTimeout: () => mixed, duration: number) => number,
-  cancelTimeout: (timeoutId: number) => void,
+  ...BasicBridge
 };
 */
 
@@ -36,16 +29,16 @@ const App = () => {
 }
 
 export const main = (platform/*: Platform*/) => {
-  platform.log("Hello world!")
-  platform.log("I'm calling from Javascript into Android!")
+  const { console, timeout, render } = platform;
+  global.console = console;
 
   const host = createRemoteRendererHost(
-    c => platform.setTimeout(c, 0),
-    id => platform.cancelTimeout(id)
+    c => (timeout.setTimeout(c, 0), 0),
+    id => {}
   )
-  host.subscribe(platform.onDiff);
-  host.mount(h(App))
-  platform.subscribeInvoke((commit, prop, value) => host.invoke(commit, prop, value))
+  host.subscribe(render.submitDiff);
+  render.subscribeCallback(host.invoke);
+  host.mount(h(App, { platform }))
 };
 
 global.main = main;

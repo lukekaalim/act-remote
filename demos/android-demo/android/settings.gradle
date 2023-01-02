@@ -17,3 +17,7 @@ dependencyResolutionManagement {
 }
 rootProject.name = "AndroidApp"
 include ':app'
+include ':KotlinBridge'
+include ':ActRemoteClient'
+project(':ActRemoteClient').projectDir = new File("../../../KotlinBridge/ActRemoteClient");
+project(':KotlinBridge').projectDir = new File("../../../KotlinBridge/KotlinBridge");

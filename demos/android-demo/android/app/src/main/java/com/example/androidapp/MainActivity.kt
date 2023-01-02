@@ -20,6 +20,8 @@ import com.example.androidapp.act.serializable.*
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.ui.StyledPlayerView
+import com.lukekaalim.kotlinbridge.BasicPlatform
+import com.lukekaalim.kotlinbridge.KotlinBridge
 import com.whl.quickjs.android.QuickJSLoader
 import com.whl.quickjs.wrapper.JSFunction
 import com.whl.quickjs.wrapper.JSObject
@@ -30,38 +32,18 @@ import kotlin.concurrent.timerTask
 
 
 class MainActivity : FragmentActivity() {
-    var renderer: ManagedRenderer<View> = CreateAndroidViewRenderer(this, ::invoke);
-
-    val invokeSubscribers = mutableSetOf<(payload: InvokePayload) -> Unit>();
-    fun invoke(payload: InvokePayload) {
-        for (subscriber in invokeSubscribers)
-            subscriber(payload);
-    }
-    fun subscribeInvoke (listener: (payload: InvokePayload) -> Unit) {
-        invokeSubscribers.add(listener);
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState);
-        var stream = assets.open("dist/bundle.js");
-        var bytes = stream.use { it.readBytes() };
-        val text = String(bytes, StandardCharsets.UTF_8)
+        val rootView = FrameLayout(this);
 
-        QuickJSLoader.init();
-        var context = QuickJSContext.create();
-        context.globalObject.setProperty("global", context.globalObject);
+        val platform = BasicPlatform(this, rootView);
+        val bridge = KotlinBridge("dist/bundle.js", assets);
 
-        context.evaluateModule(text, "main");
-        var main = context.globalObject.getJSFunction("main");
+        val button = Button(this);
+        button.text = "Hello!";
+        rootView.addView(button)
+        bridge.run(platform);
+        setContentView(rootView);
 
-        var parent = FrameLayout(this);
-        var platform = CreatePlatformJSObject(context, renderer, parent, ::subscribeInvoke);
-
-        main.call(platform);
-        setContentView(parent)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
+        super.onCreate(savedInstanceState)
     }
 }

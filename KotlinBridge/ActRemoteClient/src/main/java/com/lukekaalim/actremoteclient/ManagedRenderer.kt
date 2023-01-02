@@ -57,7 +57,7 @@ public class ManagedRenderer<T>(val options: Options<T>): Renderer<T> {
         val node = nodes[diff.next.id] ?: createNode(diff)
         val children = diff.diffs.flatMap { render(it) };
 
-        val hasDiff = diff.next.version !== diff.prev.version;
+        val hasDiff = diff.next.version != diff.prev.version;
 
         if (node == null) {
             return if (!hasDiff)

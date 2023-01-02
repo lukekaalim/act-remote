@@ -916,11 +916,10 @@ const createRemoteRendererHost = (
   const invoke = (id, prop, value) => {
     const node = nodes.get(id);
     if (!node)
-      throw new Error();
+      throw new Error('No Node');
     const propValue = node.element.props[prop];
     if (typeof propValue !== 'function')
-      throw new Error();
-    
+      throw new Error('Prop is not a function');
     const result = ((propValue/*: any*/)/*: (...$ReadOnlyArray<JSONValue>) => JSONValue*/)(...value);
     return result;
   };

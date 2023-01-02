@@ -8,7 +8,7 @@ import type { CommitID } from "@lukekaalim/act-reconciler";
 export type RendererService = {
   submitDiff: (diff: JSONDiff) => void,
   subscribeCallback: (
-    callback: (commit: CommitID, prop: string, args: JSONValue[]) => void,
+    callback: (commit: CommitID, prop: string, args: JSONValue[]) => mixed,
   ) => { cancel: () => void };
 };
 */
