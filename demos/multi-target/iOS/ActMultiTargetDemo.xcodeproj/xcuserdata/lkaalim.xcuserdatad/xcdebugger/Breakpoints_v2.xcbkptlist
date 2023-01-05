@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "768F8FFA-8EE8-43AB-A02C-F02BD00519D5"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B7ADA87C-A59B-4CD5-BBD9-BEA4A118E05A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ActMultiTargetDemo/ActMultiTargetDemoApp.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "08A6730B-DAA3-4A32-A9D7-34EBBCF2CC89"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../SwiftBridge/Sources/ActRenderer/UIActRendererController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "onDiff(diff:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "08A6730B-DAA3-4A32-A9D7-34EBBCF2CC89 - e3813718fcea50f9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ActRenderer.UIActRendererController.onDiff(diff: ActRenderer.Diff) -&gt; ()"
+                  moduleName = "ActMultiTargetDemo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lkaalim/Projects/lukekaalim/act-remote/SwiftBridge/Sources/ActRenderer/UIActRendererController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "196">
+               </Location>
+               <Location
+                  uuid = "08A6730B-DAA3-4A32-A9D7-34EBBCF2CC89 - e3813718fcea50f9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ActRenderer.UIActRendererController.onDiff(diff: ActRenderer.Diff) -&gt; ()"
+                  moduleName = "ActMultiTargetDemo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lkaalim/Projects/lukekaalim/act-remote/SwiftBridge/Sources/ActRenderer/UIActRendererController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "392">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3CE8E98E-4DB2-40C3-8A7C-053602A0363B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../SwiftBridge/Sources/SwiftBridge/SwiftBridge.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "init(bundlePath:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6CBF3609-7CA5-4F37-858D-977428488B13"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ActMultiTargetDemo/ActMultiTargetDemoApp.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "unknown"
+            landmarkType = "0">
+            <Locations>
+               <Location
+                  uuid = "6CBF3609-7CA5-4F37-858D-977428488B13 - e8ad2bed8cc03c5f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "one-time initialization function for bridge"
+                  moduleName = "ActMultiTargetDemo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lkaalim/Projects/lukekaalim/act-remote/demos/multi-target/iOS/ActMultiTargetDemo/ActMultiTargetDemoApp.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "6CBF3609-7CA5-4F37-858D-977428488B13 - 3cbc3998fd9906e5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ActMultiTargetDemo.bridge.unsafeMutableAddressor : SwiftBridge.SwiftBridge"
+                  moduleName = "ActMultiTargetDemo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lkaalim/Projects/lukekaalim/act-remote/demos/multi-target/iOS/ActMultiTargetDemo/ActMultiTargetDemoApp.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "61F1AF5D-1A03-4B89-87E0-A0882F60A2D8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ActMultiTargetDemo/ActMultiTargetDemoApp.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "unknown"
+            landmarkType = "0">
+            <Locations>
+               <Location
+                  uuid = "61F1AF5D-1A03-4B89-87E0-A0882F60A2D8 - 25b33093636b1270"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "one-time initialization function for platform"
+                  moduleName = "ActMultiTargetDemo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lkaalim/Projects/lukekaalim/act-remote/demos/multi-target/iOS/ActMultiTargetDemo/ActMultiTargetDemoApp.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "8">
+               </Location>
+               <Location
+                  uuid = "61F1AF5D-1A03-4B89-87E0-A0882F60A2D8 - 69c42fabb2ad7b8f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ActMultiTargetDemo.platform.unsafeMutableAddressor : SwiftBridge.BasicPlatform"
+                  moduleName = "ActMultiTargetDemo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lkaalim/Projects/lukekaalim/act-remote/demos/multi-target/iOS/ActMultiTargetDemo/ActMultiTargetDemoApp.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D64E2E1D-B659-403E-A0E0-15DA8B051CDF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../SwiftBridge/Sources/SwiftBridge/SwiftBridge.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "11"
+            endingLineNumber = "11"
+            landmarkName = "init(bundlePath:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8FE9C948-375D-4900-A30C-15218195540D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../SwiftBridge/Sources/SwiftBridge/BasicPlatform.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "init()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A29DCBD0-1BC4-4D68-A1E4-C621ED4D28F0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../SwiftBridge/Sources/ActRenderer/UIKitRenderer.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "updateView(_:_:_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C1DE78EC-BE30-4A6B-9018-22FE639CBAD3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../SwiftBridge/Sources/ActRenderer/UIKitRenderer.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "createView(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

@@ -1,0 +1,22 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+rootProject.name = "ActMultiTargetDemo"
+include ':app'
+
+include ':ActRemoteClient'
+project(':ActRemoteClient').projectDir = new File("../../../KotlinBridge/ActRemoteClient");
+
+include ':KotlinBridge'
+project(':KotlinBridge').projectDir = new File("../../../KotlinBridge/KotlinBridge");

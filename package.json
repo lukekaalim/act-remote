@@ -5,7 +5,8 @@
     "demos/android-demo",
     "demos/ios-demo",
     "bridge",
-    "demos/multi-target"
+    "demos/multi-target",
+    "native"
   ],
   "scripts": {
     "demo:web": "npm run demo -w web"

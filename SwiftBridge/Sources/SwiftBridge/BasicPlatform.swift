@@ -12,6 +12,7 @@ public struct BasicPlatform: Platform {
     public let console = ConsoleService();
     public let render = RenderService();
     public let timeout = TimeoutService();
+    public let device = DeviceService();
     
     public init() {
         
@@ -22,6 +23,7 @@ public struct BasicPlatform: Platform {
         object.setProperty("render", render.CreateServiceObject(context: context));
         object.setProperty("console", console.CreateServiceObject(context: context));
         object.setProperty("timeout", timeout.CreateServiceObject(context: context));
+        object.setProperty("device", device.CreateServiceObject(context: context));
         object.dup();
         
         return object;

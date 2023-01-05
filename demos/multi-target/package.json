@@ -2,13 +2,14 @@
   "name": "multi-target",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "main": "index.js",
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^15.0.1",
     "rollup": "^3.9.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "rollup -c -w"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,8 @@
   },
   "homepage": "https://github.com/lukekaalim/act-remote#readme",
   "dependencies": {
-    "@lukekaalim/act": "^2.4.1"
+    "@lukekaalim/act": "^2.4.1",
+    "@lukekaalim/act-remote-renderer": "*",
+    "@lukekaalim/platform-bridge": "*"
   }
 }

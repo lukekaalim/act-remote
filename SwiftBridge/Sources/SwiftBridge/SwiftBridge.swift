@@ -8,7 +8,7 @@ public class SwiftBridge {
     public let context: JSContext;
     
     public init(bundlePath: String) {
-        runtime = JSRuntime()!
+        runtime = JSRuntime(maxStackSize: 1024 * 1024)!
         context = runtime.createContext()!
         
         let dist = NSDataAsset(name: bundlePath)!

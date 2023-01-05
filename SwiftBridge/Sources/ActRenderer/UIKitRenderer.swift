@@ -30,9 +30,8 @@ class UIKitRenderer: Renderer {
         case .function:
             return nil;
         case .element(let element):
-            print("CREATING NODE \(element.name)");
             switch (element.name) {
-            case "ios:label":
+            case "ios:label", "act:string":
                 return UILabel();
             case "ios:stack_view":
                 return UIStackView();
@@ -47,14 +46,18 @@ class UIKitRenderer: Renderer {
     func updateView(_ diff: Diff, _ view: UIView, _ children: [RenderResult<UIView>]) {
         switch (view) {
         case let label as UILabel:
-            let textProp = diff.next.element.props["text"];
-            if case .mixed(let prop) = textProp! {
+            label.textAlignment = .center;
+            let contentProp = diff.next.element.props["content"];
+            if case .mixed(let prop) = contentProp! {
                 label.text = prop.value.string!;
             }
         case let button as UIButton:
+            button.setTitle("Click me!", for: .normal)
+            button.tintColor = UIColor.red;
+            //button.backgroundColor = UIColor;
             let onPressProp = diff.next.element.props["onPress"];
             if case .function = onPressProp! {
-                if #available(tvOS 14.0, *) {
+                if #available(tvOS 14.0, iOS 14.0, *) {
                     button.addAction(UIAction(title: "Button Title", handler: { _ in
                         self.invoke(FunctionPropInvoke(
                             commit: diff.next.id,

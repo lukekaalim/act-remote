@@ -67,8 +67,7 @@ public class ViewRenderer(val context: Context, val invoke: (payload: InvokePayl
         if (view is LinearLayout) {
             var orientation = diff.next.element.props["orientation"];
             if (orientation is JSONProp)
-                view.orientation = if
-                                           ((orientation.value as String).lowercase() == "horizontal")
+                view.orientation = if ((orientation.value as String).lowercase() == "horizontal")
                     LinearLayout.HORIZONTAL
                 else
                     LinearLayout.VERTICAL
@@ -76,11 +75,11 @@ public class ViewRenderer(val context: Context, val invoke: (payload: InvokePayl
         if (view is FrameLayout) {
             if (view.layoutParams == null)
                 view.layoutParams = ViewGroup.LayoutParams(
-                    ActionBar.LayoutParams.MATCH_PARENT,
-                    ActionBar.LayoutParams.MATCH_PARENT
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT
                 );
-            view.layoutParams.width = ActionBar.LayoutParams.MATCH_PARENT;
-            view.layoutParams.height = ActionBar.LayoutParams.MATCH_PARENT;
+            view.layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT;
+            view.layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT;
         }
         if (view is TextView) {
             var content = diff.next.element.props["content"];
@@ -94,6 +93,17 @@ public class ViewRenderer(val context: Context, val invoke: (payload: InvokePayl
                     invoke(InvokePayload(diff.next.id, "onClick", listOf("YES")))
                 }
         }
+
+        var layoutWeightProp = diff.next.element.props["layoutWeight"];
+        if (layoutWeightProp is JSONProp) {
+            val params = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.MATCH_PARENT,
+            )
+            params.weight = (layoutWeightProp.value as? Number)?.toFloat() ?: 0f;
+            view.layoutParams = params
+        }
+
         /*
         if (view is StyledPlayerView) {
             var player = view.player;

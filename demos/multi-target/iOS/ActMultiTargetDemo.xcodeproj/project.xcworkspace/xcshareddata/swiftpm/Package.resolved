@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "quickjs-swift-tvos",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/lukekaalim/QuickJS-Swift-tvOS.git",
+      "state" : {
+        "branch" : "dev/add-tvOS-support",
+        "revision" : "6172df23eed84ab7d04d2942e7e58840581259da"
+      }
+    }
+  ],
+  "version" : 2
+}
